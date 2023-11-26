@@ -1,7 +1,0 @@
-{
-    "extends": "nodecg-io-tsconfig",
-    "compilerOptions": {
-        "noEmit": true,
-        "composite": false
-    }
-}

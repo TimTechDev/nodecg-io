@@ -1,4 +1,0 @@
-{
-    "exclude": ["dashboard", "extension/__tests__"],
-    "extends": "nodecg-io-tsconfig"
-}
