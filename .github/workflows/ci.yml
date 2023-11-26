@@ -127,7 +127,7 @@ jobs:
               run: sudo apt update && sudo apt-get -y install libusb-1.0-0-dev libasound2-dev libudev-dev
 
             - name: Some tests
-              run: ls -la /usr && ls -la /usr/lib && ls -la /usr/lib64
+              run: ls -la /usr/lib/x86_64-linux-gnu && ls -la /usr/lib64
 
             - name: Install node native development files
               shell: bash
