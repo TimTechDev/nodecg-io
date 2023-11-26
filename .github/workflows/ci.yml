@@ -126,12 +126,17 @@ jobs:
               if: matrix.os == 'ubuntu-latest'
               run: sudo apt update && sudo apt-get -y install libusb-1.0-0-dev libasound2-dev libudev-dev
 
+            - name: Link stuff (1/3)
+              run: ln /usr/lib/x86_64-linux-gnu/libasound.so.2.0.0 /usr/lib64/libasound.so.2.0.0
+            
+            - name: Link stuff (2/3)
+              run: ln /usr/lib/x86_64-linux-gnu/libasound.so.2.0.0 /usr/lib64/libasound.so.2
+            
+            - name: Link stuff (3/3)
+              run: ln /usr/lib/x86_64-linux-gnu/libasound.so.2.0.0 /usr/lib64/libasound.so
+            
             - name: Some tests
-              run:
-                ln /usr/lib/x86_64-linux-gnu/libasound.so.2.0.0 /usr/lib64/libasound.so.2.0.0
-                ln /usr/lib/x86_64-linux-gnu/libasound.so.2.0.0 /usr/lib64/libasound.so.2
-                ln /usr/lib/x86_64-linux-gnu/libasound.so.2.0.0 /usr/lib64/libasound.so
-                ls -la /usr/lib/x86_64-linux-gnu && ls -la /usr/lib64
+              run: ls -la /usr/lib/x86_64-linux-gnu && ls -la /usr/lib64
 
             - name: Install node native development files
               shell: bash
