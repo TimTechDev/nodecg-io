@@ -25,9 +25,6 @@ jobs:
       - name: Debug
         continue-on-error: true
         run: |
-          sudo ls -lah /proc/asound/
-          sudo cat /proc/asound/devices
-          sudo cat /proc/asound/oss/devices
           groups
           ls -lah /dev/snd/
 
