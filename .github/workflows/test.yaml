@@ -12,9 +12,12 @@ jobs:
           node-version: "18"
 
       - name: Install system dependencies
-        run: sudo apt-get -y update && sudo apt-get -y install libusb-1.0-0-dev libasound2-dev libudev-dev
+        run: |
+          sudo apt-get -y update
+          sudo apt-get -y install libusb-1.0-0-dev libasound2-dev libudev-dev
 
       - name: Debug
+        continue-on-error: true
         run: sudo cat /proc/asound/seq/clients
 
       - name: Install nodejs dependencies
