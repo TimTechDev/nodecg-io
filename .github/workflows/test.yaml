@@ -14,8 +14,8 @@ jobs:
       - name: Install system dependencies
         run: sudo apt-get -y update && sudo apt-get -y install libusb-1.0-0-dev libasound2-dev libudev-dev
 
-      - name: Possible Fix
-        run: sudo ln -s /usr/lib/x86_64-linux-gnu/alsa-lib/ /usr/lib64/alsa-lib
+      - name: Debug
+        run: sudo cat /proc/asound/seq/clients
 
       - name: Install nodejs dependencies
         run: npm ci
