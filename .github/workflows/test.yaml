@@ -20,7 +20,7 @@ jobs:
         continue-on-error: true
         run: |
            sudo depmod --verbose
-          sudo modprobe --verbose snd-dummy
+           sudo modprobe --verbose snd-dummy
 
       - name: Debug
         continue-on-error: true
