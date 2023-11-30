@@ -12,7 +12,7 @@ jobs:
           node-version: "18"
 
       - name: Install system dependencies
-        run: sudo apt update && sudo apt-get -y install libusb-1.0-0-dev libasound2-dev libudev-dev
+        run: sudo apt-get -y update && sudo apt-get -y install libusb-1.0-0-dev libasound2-dev libudev-dev
 
       - name: Possible Fix
         run: sudo ln -s /usr/lib/x86_64-linux-gnu/alsa-lib/ /usr/lib64/alsa-lib
@@ -21,4 +21,7 @@ jobs:
         run: npm ci
 
       - name: Run easymidi
+        env:
+          SDL_VIDEODRIVER: "dummy"
+          SDL_AUDIODRIVER: "disk"
         run: npm run test
