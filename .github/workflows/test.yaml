@@ -18,7 +18,7 @@ jobs:
 
       - name: Patch
         continue-on-error: true
-        run: sudo groupmems -g audio -u $USER
+        run: sudo groupmems -g audio -a $USER
 
       - name: Debug
         continue-on-error: true
