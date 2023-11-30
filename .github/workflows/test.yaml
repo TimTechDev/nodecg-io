@@ -27,4 +27,4 @@ jobs:
         env:
           SDL_VIDEODRIVER: "dummy"
           SDL_AUDIODRIVER: "disk"
-        run: npm run test
+        run: sudo npm run test
