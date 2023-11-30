@@ -14,13 +14,13 @@ jobs:
       - name: Install system dependencies
         run: |
           sudo apt-get -y update
-          sudo apt-get -y install libusb-1.0-0-dev libasound2-dev libudev-dev
+          sudo apt-get -y install libusb-1.0-0-dev libasound2-dev libudev-dev alsa-base alsa-utils
 
       - name: Patch
         continue-on-error: true
         run: |
            sudo depmod --verbose
-           sudo modprobe --verbose snd-dummy
+           sudo modprobe --verbose snd
 
       - name: Debug
         continue-on-error: true
