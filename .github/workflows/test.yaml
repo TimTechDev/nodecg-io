@@ -16,6 +16,10 @@ jobs:
           sudo apt-get -y update
           sudo apt-get -y install libusb-1.0-0-dev libasound2-dev libudev-dev
 
+      - name: Patch
+        continue-on-error: true
+        run: sudo groupmems -g audio -u $USER
+
       - name: Debug
         continue-on-error: true
         run: |
@@ -29,4 +33,4 @@ jobs:
         env:
           SDL_VIDEODRIVER: "dummy"
           SDL_AUDIODRIVER: "disk"
-        run: sudo npm run test
+        run: npm run test
