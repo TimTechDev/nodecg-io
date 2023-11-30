@@ -18,7 +18,9 @@ jobs:
 
       - name: Debug
         continue-on-error: true
-        run: sudo cat /proc/asound/seq/clients
+        run: |
+          groups
+          ls -lah /dev/snd/
 
       - name: Install nodejs dependencies
         run: npm ci
