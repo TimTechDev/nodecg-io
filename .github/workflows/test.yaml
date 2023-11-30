@@ -19,8 +19,7 @@ jobs:
       - name: Patch
         continue-on-error: true
         run: |
-           sudo depmod --verbose
-           sudo modprobe --verbose snd
+           sudo chown -R $USER:audio /dev/snd/
 
       - name: Debug
         continue-on-error: true
