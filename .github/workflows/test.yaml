@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   tests:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v4.1.1
       - uses: actions/setup-node@v4.0.0
@@ -14,7 +14,7 @@ jobs:
       - name: Install system dependencies
         run: |
           sudo apt-get -y update
-          sudo apt-get -y install --reinstall alsa-base alsa-utils
+          sudo apt-get -y install libusb-1.0-0-dev libasound2-dev libudev-dev
 
       - name: Patch
         continue-on-error: true
@@ -35,7 +35,7 @@ jobs:
         run: npm ci
 
       - name: Run easymidi
-        env:
-          SDL_VIDEODRIVER: "dummy"
-          SDL_AUDIODRIVER: "disk"
+        #env:
+        #  SDL_VIDEODRIVER: "dummy"
+        #  SDL_AUDIODRIVER: "disk"
         run: npm run test
