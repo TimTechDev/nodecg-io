@@ -1,4 +1,4 @@
-name: test
+honame: test
 
 on: [push]
 
@@ -18,11 +18,14 @@ jobs:
 
       - name: Patch
         continue-on-error: true
-        run: sudo groupmems -g audio -a $USER
+        run: echo patch
 
       - name: Debug
         continue-on-error: true
         run: |
+          sudo ls -lah /proc/asound/
+          sudo cat /proc/asound/devices
+          sudo cat /proc/asound/oss/devices
           groups
           ls -lah /dev/snd/
 
