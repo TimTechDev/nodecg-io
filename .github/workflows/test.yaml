@@ -18,12 +18,13 @@ jobs:
 
       - name: Patch
         continue-on-error: true
-        run: echo patch
+        run: |
+           sudo depmod --verbose
+          sudo modprobe --verbose snd-dummy
 
       - name: Debug
         continue-on-error: true
         run: |
-          sudo modprobe snd
           sudo ls -lah /proc/asound/
           sudo cat /proc/asound/devices
           sudo cat /proc/asound/oss/devices
