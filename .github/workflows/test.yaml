@@ -23,6 +23,7 @@ jobs:
       - name: Debug
         continue-on-error: true
         run: |
+          sudo sudo modprobe snd
           sudo ls -lah /proc/asound/
           sudo cat /proc/asound/devices
           sudo cat /proc/asound/oss/devices
