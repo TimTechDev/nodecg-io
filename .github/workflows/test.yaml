@@ -4,7 +4,10 @@ on: [push]
 
 jobs:
   tests:
-    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        os: [ubuntu-22.04, ubuntu-20.04]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4.1.1
       - uses: actions/setup-node@v4.0.0
@@ -14,9 +17,10 @@ jobs:
       - name: Install system dependencies
         run: |
           sudo apt-get -y update
-          sudo apt-get -y install libusb-1.0-0-dev libasound2-dev libudev-dev alsa-base alsa-utils
+          sudo apt-get -y install libusb-1.0-0-dev libasound2-dev libudev-dev
 
-      - name: Patch
+      - name: Patch \#1030 (ubuntu 20.04)
+        if: matrix.os == 'ubuntu-latest'
         continue-on-error: true
         run: |
            sudo chown -R $USER:audio /dev/snd/
