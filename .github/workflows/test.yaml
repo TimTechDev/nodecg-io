@@ -27,7 +27,7 @@ jobs:
            sudo chown -R $USER:audio /dev/snd/
 
       - name: Patch \#1030 (ubuntu 22.04) – Removing midi services / samples
-        if: matrix.os == 'ubuntu-20.04'
+        if: matrix.os == 'ubuntu-22.04'
         continue-on-error: true
         run: |
            sudo rm -rf ./services/nodecg-io-midi-*
