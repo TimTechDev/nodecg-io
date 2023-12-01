@@ -20,11 +20,18 @@ jobs:
           sudo apt-get -y update
           sudo apt-get -y install libusb-1.0-0-dev libasound2-dev libudev-dev
 
-      - name: Patch \#1030 (ubuntu 20.04)
-        if: matrix.os == 'ubuntu-latest'
+      - name: Patch \#1030 (ubuntu 20.04) – Resolve missing permissions
+        if: matrix.os == 'ubuntu-20.04'
         continue-on-error: true
         run: |
            sudo chown -R $USER:audio /dev/snd/
+
+      - name: Patch \#1030 (ubuntu 22.04) – Removing midi services / samples
+        if: matrix.os == 'ubuntu-20.04'
+        continue-on-error: true
+        run: |
+           sudo rm -rf ./services/nodecg-io-midi-*
+           sudo rm -rf ./samples/midi-*
 
       - name: Debug
         continue-on-error: true
